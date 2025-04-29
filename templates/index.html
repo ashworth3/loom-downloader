@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loom Video Downloader</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <h1>Download Loom Recording</h1>
+            <h3 class="h3">Paste <a href="https://www.loom.com/" target="_blank">Loom</a> share link 🔗</h3>
+            <form method="POST">
+                <input type="text" name="loom_url" id="loom_url" placeholder="Paste Loom link here..." required>
+                <div class="buttons">
+                    <button type="button" id="pasteBtn">Paste</button>
+                    <button type="submit">Download</button>
+                </div>
+            </form>
+        </div>
+
+        <footer>
+            <div class="footer-line">
+                <a href="https://github.com/ashworth3" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/andre-ashworth" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <span class="divider">|</span>
+                <span>Built by Andre</span>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const pasteBtn = document.getElementById('pasteBtn');
+        if (pasteBtn) {
+            pasteBtn.addEventListener('click', () => {
+                if (navigator.clipboard?.readText) {
+                    navigator.clipboard.readText().then(text => {
+                        document.getElementById('loom_url').value = text;
+                    }).catch(err => {
+                        alert('Clipboard access failed: ' + err);
+                    });
+                } else {
+                    alert('Clipboard API not supported in this browser.');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
