@@ -1,6 +1,6 @@
 # Loom Downloader
 
-Simple Flask web app for downloading Loom video recordings via share link.
+Simple Flask web app to bypass download restrictions on [Loom](https://www.loom.com/) by getting recordings via public share link.
 
 ## Features
 - Paste a Loom share link
